@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^courses/', include('courses.urls')),
+    url(r'^courses/', include('courses.urls', namespace='courses')),
     url(r'^$', views.home),
 ]
+urlpatterns += staticfiles_urlpatterns()

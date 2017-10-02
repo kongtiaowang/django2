@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %}course detail{% endblock %}
+
+{% block courses_list %}  
+<h5>--Course Detail--</h5>
+  <h2>{{ course.title }}</h2>
+  <p>{{ course.description }}</p>
+
+  <section>
+  {% for step in course.step_set.all %}
+  <h5><a href="{% url 'courses:step_de' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title }}</a></h5>
+    {{ step.description }}
+    {% endfor %}
+  </section>
+{% endblock %}

@@ -6,5 +6,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-	home_data = "This is a my home page!"
-	return render(request, "home.html", {'home_data' : home_data})
+	return render(request, "home.html")
