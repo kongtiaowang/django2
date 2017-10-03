@@ -14,14 +14,15 @@
   </head>
   <body>
   <div class="container">
-  <nav>
-     <a href="/">Home<a/>
-     <a href="{% url 'courses:list' %}">Courses</a>
+  <nav class="navbar">
+     <a href="/" class="{% block homeActive %}{% endblock %}">Home<a/>
+     <a href="{% url 'courses:list' %}" class="{% block coursesActive %}{% endblock %}">Courses</a>
   </nav>
   <h1>{% block homepage %}{% endblock %}</h1>
   <div>{% block courses %}{% endblock %}</div>
   <div>{% block courses_list %}{% endblock %}</div>
   <div>{% block step_detail %}{% endblock %}</div>
+  <div>{% block form %}{% endblock %}</div>
   </div>
 
 

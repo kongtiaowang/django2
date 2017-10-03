@@ -1,0 +1,19 @@
+{% extends 'layout.html' %} 
+
+{% block title %}MCIN Presentation - Shen{% endblock %}
+
+{% block form %}
+<div class="row">
+    <form action="" method="post">
+	{{ form.as_p }}
+	{% csrf_token %}
+	 <select name="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+  </select>
+	<input type="submit">
+    </form>
+</div>
+{% endblock %}

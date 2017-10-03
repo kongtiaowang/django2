@@ -1,8 +1,17 @@
 {% extends 'layout.html' %}
+{% block coursesActive %}btn btn-primary{% endblock %}
+
 {% block title %}courses list{% endblock %}
 {% block courses %}
-{% for course in courses %}
-<h2><a href={% url 'courses:course_de' pk=course.pk %}>{{ course.title }}</a></h2>
-    {{ course.description }}
-{% endfor %}
+<div class="container">
+    <div class="row ">
+    	{% for course in courses %}
+    	<div class="col-md-4">
+    <h2><a href={% url 'courses:course_de' pk=course.pk %}>{{ course.title }}</a></h2>
+       <p>{{ course.description }}</p>
+         </div>
+       {% endfor %}
+    </div>
+</div>
+
 {% endblock %}
