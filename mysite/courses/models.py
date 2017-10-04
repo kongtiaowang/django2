@@ -20,7 +20,10 @@ class Step(models.Model):
 	description = models.TextField()
 	order = models.IntegerField(default=0)
 	course = models.ForeignKey(Course)
-   
+
+	class Meta:
+		unique_together = ('course', 'title')
 
 	def __str__(self):
 		return self.title
+

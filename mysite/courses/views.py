@@ -2,9 +2,11 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404
+from rest_framework import viewsets
 from .models import Course
 from .models import Step
 from .forms import CourseForm
+from courses.serializers import CourseSerializer,StepSerializer
 # Create your views here.
 
 def get_courses(request):
@@ -30,3 +32,13 @@ def courses_add(request):
 			course.save()
 			return HttpResponseRedirect("/")
 	return render(request, 'courses/course_add.html',{'form': form})
+
+class CourseViewSet(viewsets.ModelViewSet):
+	queryset = Course.objects.all()
+ 	serializer_class = CourseSerializer
+
+class StepViewSet(viewsets.ModelViewSet):
+	queryset = Step.objects.all()
+ 	serializer_class = StepSerializer
+
+ 		

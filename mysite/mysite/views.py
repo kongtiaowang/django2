@@ -5,6 +5,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect
 from . import forms
 import requests
+from rest_framework.response import Response
+from rest_framework.views import APIView
 # Create your views here.
 
 def home(request):
@@ -20,3 +22,4 @@ def suggestion(request):
 		return HttpResponseRedirect("/");
 
 	return render(request, 'suggestion_form.html', {'form': form})
+
