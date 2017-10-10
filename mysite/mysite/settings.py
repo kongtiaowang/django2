@@ -39,7 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'courses',
+    'graphene_django',
 ]
+
+GRAHENE = {
+    'SCHEMA': 'mysite.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

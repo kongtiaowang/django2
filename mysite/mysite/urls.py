@@ -21,6 +21,8 @@ from . import views
 from courses.views import CourseViewSet
 from courses.views import StepViewSet
 from rest_framework.routers import DefaultRouter
+from graphene_django.views import GraphQLView
+from mysite.schema import schema
 
 router = DefaultRouter()
 router.register(r'courses', CourseViewSet)
@@ -33,6 +35,7 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^suggestion/', views.suggestion),
     url(r'^api/', include(router.urls)),
+    url(r'^graphql',GraphQLView.as_view(graphiql=True, schema=schema)),
 
 ]
 urlpatterns += staticfiles_urlpatterns()
