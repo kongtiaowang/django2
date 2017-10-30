@@ -23,3 +23,6 @@ def suggestion(request):
 
 	return render(request, 'suggestion_form.html', {'form': form})
 
+
+def react_demo(request):
+    return render(request, "react_demo.html")

@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "assets"),
   devtool: debug ? "inline-sourcemap" : false,
-  entry: "./js/client.js",
+  entry: "./js/demo1.js",
   module: {
     loaders: [
       {
@@ -21,7 +21,7 @@ module.exports = {
   },
   output: {
     path: __dirname + "/assets/",
-    filename: "client.min.js"
+    filename: "demo1.min.js"
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),

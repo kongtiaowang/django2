@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^courses/', include('courses.urls', namespace='courses')),
     url(r'^$', views.home),
+    url(r'^react_demo/', views.react_demo),
     url(r'^suggestion/', views.suggestion),
     url(r'^api/', include(router.urls)),
     url(r'^graphql',GraphQLView.as_view(graphiql=True, schema=schema)),
