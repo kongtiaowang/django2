@@ -27,7 +27,7 @@ class Items extends React.Component {
   var itemNode = datas.map((people,index)=>
     {
     	return (
-         <Item data={people} id={index}/>
+         <Item data={people} id={index} handleDelete={this.props.handleDelete}/>
     	)
     }
   	);
@@ -45,12 +45,16 @@ class Item extends React.Component {
     super(props);
     this.state={
     	enableAdd:false,
+        enableUpdate:false,
     };
   }
-
+  handleUpdate(){
+     this.setState({enableUpdate:true});
+  }
   render() {
-  const condition = this.state.enableAdd;
-  if (condition) {
+  const id = this.props.id;
+  const update = this.state.enableUpdate;
+  if (update) {
     return (
   	<div>
   	    <li className="list-group-item"><input type="text" id="name" value={this.props.data.name} /> <input type="text" id="age" value={this.props.data.age} /><a href="#">confirm</a></li>
@@ -59,9 +63,9 @@ class Item extends React.Component {
   } else {
      return (
   	<div>
-  	    <li className="list-group-item">{this.props.data.name} | {this.props.data.age} <a href="#">update</a> <span> | </span><a href="#">delete</a></li>
+        <li className="list-group-item">{this.props.data.name} | {this.props.data.age} <a href="#"onClick={this.handleUpdate.bind(this)}>update</a> <span> | </span><a href="#" onClick={()=>this.props.handleDelete(id)}>delete</a></li>
   	</div>
-  	)
+           )
     }
   }
  };
@@ -99,7 +103,12 @@ class List extends React.Component {
 
     // this.setState({insertStatus: true});
   }
+  handleDelete(id){
+    alert("delete"+id);
+    people.splice(id,1);
+    this.setState({data:people});
 
+  }
   render()
   {
 
@@ -111,7 +120,7 @@ class List extends React.Component {
        		<button className="btn btn-default">Add</button>
      	  	<ul className="list-group">
      	  	<li className="list-group-item"><input type="text" id="name" /> <input type="text" id="age" /><a href="#" onClick={this.handleChange.bind(this)}>confirm</a></li>
-              	<Items data={this.state.data} value={this.state.newPeople}/>
+                <Items data={this.state.data} value={this.state.newPeople} handleDelete={this.handleDelete.bind(this)} />
      	  	</ul>
      	</div>);
    } else {
@@ -119,7 +128,7 @@ class List extends React.Component {
        <div className="container" id="container">
        			<button className="btn btn-default" onClick={this.handleAdd.bind(this)}>Add</button>
      	  		<ul className="list-group">
-              	<Items data={this.state.data} />
+                <Items data={this.state.data} handleDelete={this.handleDelete.bind(this)} />
      	  		</ul>
      			</div>);
    }
