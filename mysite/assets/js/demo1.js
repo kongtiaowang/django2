@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 //todo ----------- getData from list and pass data to items and itme
 var people = [
-            {name:"wang shen",age:38},
-            {name:"wang ying",age:38},
-            {name:"wang jia hang",age:9},
-            {name:"wang zoe",age:3},
+            {name:"Tom",age:38},
+            {name:"Jerry",age:38},
+            {name:"Fox",age:19},
+            {name:"Mickey",age:23},
   	   	   ];
 
 // Items component
